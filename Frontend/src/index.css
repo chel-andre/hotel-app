@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.bg-cream{
+    background-color: #005d97;
+}
+
+.service-card{
+    background: #f0eeee;
+  box-shadow: 15px 15px 30px #e0e0e0,
+             -15px -15px 30px #ffffff;
+}
+
+.hotel-card{
+    background: #f0f0f0; 
+    box-shadow: 2px -1px 47px -3px rgba(117,112,117,0.95);
+}
+
+
+.footer{
+    background-color: #1D2B53;
+}
+
