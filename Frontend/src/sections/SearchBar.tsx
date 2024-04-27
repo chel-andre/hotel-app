@@ -127,7 +127,7 @@ const SearchBar = () => {
             />
           </div>
 
-          <button className="p-4 bg-blue-800 h-full text-white hover:bg-blue-600 cursor-pointer duration-100 ease-in-out w-[70%] mx-auto">
+          <button className="p-4 bg-blue-800 h-full text-white hover:bg-blue-600 cursor-pointer duration-100 ease-in-out w-[70%] mx-auto" id="Search">
             Search
           </button>
         </div>

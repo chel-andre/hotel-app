@@ -134,7 +134,7 @@ const BookingUpdatingPage = () => {
       <div className="mt-6">
         <button
           type="submit"
-          className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 focus:outline-none focus:ring focus:border-blue-300"
+          className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 focus:outline-none focus:ring focus:border-blue-300" id="Update-Booking"
         >
           Update Booking
         </button>

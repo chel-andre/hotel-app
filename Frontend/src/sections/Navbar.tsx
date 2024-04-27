@@ -89,7 +89,7 @@ const Navbar = () => {
             offset={-70}
             duration={500}
           >
-            <h1 className="text-md font-semibold hover:text-red-600 cursor-pointer">
+            <h1 className="text-md font-semibold hover:text-red-600 cursor-pointer" id="Featured">
               Featured
             </h1>
           </LInk>
@@ -97,18 +97,18 @@ const Navbar = () => {
         <div className="button-left hidden lg:flex gap-3 items-center">
           {loggedIn ? (
             <>
-              <p className="relative cursor-pointer text-xl">
+              <p className="relative cursor-pointer text-xl" id="name">
                 <AccountCircle />
                 {firstName ? firstName : "user"}
               </p>
               <Link to={"/booking"}>
-                <button className="cursor-pointer  text-white p-2 rounded-lg bg-blue-600 hover:bg-blue-700 hover:shadow-xl transition-all ease-in-out">
+                <button className="cursor-pointer  text-white p-2 rounded-lg bg-blue-600 hover:bg-blue-700 hover:shadow-xl transition-all ease-in-out" id="My-Bookings">
                   My Bookings
                 </button>
               </Link>
 
               <button
-                className="bg-red-600 text-white p-2 rounded-lg"
+                className="bg-red-600 text-white p-2 rounded-lg" id="LogOut"
                 onClick={(e) => {
                   e.preventDefault();
                   handleLogOut();
@@ -122,7 +122,7 @@ const Navbar = () => {
               to={"/login"}
               style={{ textDecoration: "none", color: "white" }}
             >
-              <button className="cursor-pointer w-36 h-12 bg-blue-600 text-white rounded-3xl hover:bg-blue-700 hover:shadow-xl transition-all ease-in-out">
+              <button className="cursor-pointer w-36 h-12 bg-blue-600 text-white rounded-3xl hover:bg-blue-700 hover:shadow-xl transition-all ease-in-out" id="Login">
                 Login
               </button>
             </Link>

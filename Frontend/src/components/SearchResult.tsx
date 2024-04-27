@@ -38,7 +38,7 @@ const SearchResult = ({ hotelData }: propType) => {
 
       {/* --------------------------center-part------------------------- */}
       <div className=" w-[100%] lg:w-[40%] gap-2 flex flex-col">
-        <h1 className="text-blue-700 font-bold text-xl">{name}</h1>
+        <h1 id="hotel-name" className="text-blue-700 font-bold text-xl">{name}</h1>
         <p className="text-sm text-gray-600">{description}</p>
         {/* facilties */}
         <div className="flex flex-wrap my-1 gap-2">
@@ -59,7 +59,7 @@ const SearchResult = ({ hotelData }: propType) => {
 
       {/*--------------------------- Right-part--------------------------- */}
       <div className=" w-[100%] lg:w-[30%] flex flex-col items-start lg:items-end gap-3">
-        <div className="flex gap-1 items-end">
+        <div className="flex gap-1 items-end" id="location">
           <AddLocation />{" "}
           <p>
             {city},{country}
@@ -68,17 +68,17 @@ const SearchResult = ({ hotelData }: propType) => {
         <p className="text-sm text-gray-500">Type: {type}</p>
 
         {/* <h4 className="text-red-900">Rating: <span> <StarRating rating={starRating} /></span></h4> */}
-        <p className="text-gray-400 text-md">
+        <p className="text-gray-400 text-md" id="people">
           {adultCount} adults, {childCount} children
         </p>
         <p className="font-semibold">
           Price:{" "}
-          <span className="text-red-900">${pricePerNight} per night</span>
+          <span id="Price" className="text-red-900">${pricePerNight} per night</span>
         </p>
         <Link
           to={`/booking/create?hotelId=${_id}&pricePerNight=${pricePerNight}&childCount=${childCount}&adultCount=${adultCount}`}
         >
-          <button className="p-2 bg-blue-900 w-[100%] text-white font-bold hover:scale-105 duration-200">
+          <button id="Book-Now" className="p-2 bg-blue-900 w-[100%] text-white font-bold hover:scale-105 duration-200">
             Book Now
           </button>
         </Link>

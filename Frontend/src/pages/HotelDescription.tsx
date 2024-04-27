@@ -38,7 +38,7 @@ const HotelDescription = () => {
       ) : (
         <>
           <div className="w-[90%] flex justify-center items-center mx-auto my-10 p-7 flex-col gap-5 bg-gray-100">
-            <h1 className="text-5xl text-blue-900 text-center font-bold">
+            <h1 className="text-5xl text-blue-900 text-center font-bold" id="hotel-name">
               {data?.name}
             </h1>
             <div className="w-[70%] h-auto mx-auto">
@@ -70,21 +70,21 @@ const HotelDescription = () => {
                 </div>
               </div>
               <div className="w-[100%] md:w-[50%] flex flex-col gap-4 md:items-end">
-                <div>
+                <div id="location">
                   <AddLocation /> {data?.city}, {data?.country}
                 </div>
-                <div>
+                <div id="people">
                   <People /> {data?.childCount} children, {data?.adultCount} adult
                 </div>
                 <div className="flex gap-2 font-semibold">
                   Rating: <StarRating rating={data?.starRating as number} />
                 </div>
-                <div className="text-red-800 font-semibold">
+                <div className="text-red-800 font-semibold" id="hotel-price">
                   <span className="font-semibold text-blue-900">Price: </span>
                   ${data?.pricePerNight} per night
                 </div>
                 <Link to={`/booking/create?hotelId=${data?._id}&pricePerNight=${data?.pricePerNight}&childCount=${data?.childCount}&adultCount=${data?.adultCount}`}>
-                <button className="p-3 w-40 bg-blue-900 text-white font-bold hover:scale-105 duration-200">
+                <button className="p-3 w-40 bg-blue-900 text-white font-bold hover:scale-105 duration-200" id="Book-Now">
                   Book Now
                 </button>
 

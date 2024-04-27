@@ -49,33 +49,33 @@ const HotelBookingCard = ({bookData}: propType) => {
         alt={bookData.hotelId.name}
       />
       <div className="px-6 py-4 ">
-        <div className="font-bold text-2xl mb-2 text-red-900">
+        <div className="font-bold text-2xl mb-2 text-red-900" id="hotel-name">
           {bookData?.hotelId.name}
         </div>
-        <p className="text-gray-600 text-md mb-2">
+        <p className="text-gray-600 text-md mb-2" id="Children">
           <span className="font-black">Children: </span> {bookData?.childCount}
         </p>
-        <p className="text-gray-600 text-md mb-2">
+        <p className="text-gray-600 text-md mb-2" id="Adults">
         <span className="font-black">Adults: </span> {bookData?.adultCount}
         </p>
-        <p className="text-gray-600 text-md mb-2">
+        <p className="text-gray-600 text-md mb-2" id="Check-In">
         <span className="font-black">Check-In: </span> {bookData?.checkInDate}
         </p>
-        <p className="text-gray-600 text-md mb-2">
+        <p className="text-gray-600 text-md mb-2" id="Check-Out">
         <span className="font-black">Check-Out: </span> {bookData?.checkOutDate}
         </p>
-        <p className="text-gray-600 text-md mb-2">
+        <p className="text-gray-600 text-md mb-2" id="Total Price">
         <span className="font-black">Total Price: </span> ${bookData?.totalPrice}
         </p>
         <div className="flex mt-4 gap-2">
           <Link to={"/booking/update/"+bookData?._id}>
           <button
-            className="bg-blue-500 text-white py-2 px-2 rounded hover:bg-blue-700 focus:outline-none focus:ring focus:border-blue-300"
+            className="bg-blue-500 text-white py-2 px-2 rounded hover:bg-blue-700 focus:outline-none focus:ring focus:border-blue-300" id="Update-Booking"
           >
             Update Booking
           </button>
           </Link>
-          <button className="bg-red-800 text-white py-2 px-4 rounded hover:bg-red-400 focus:outline-none focus:ring focus:border-red-300" onClick={()=>{
+          <button className="bg-red-800 text-white py-2 px-4 rounded hover:bg-red-400 focus:outline-none focus:ring focus:border-red-300" id="Delete-Booking" onClick={()=>{
             handleDelete(bookData?._id);
           }}>
             Delete Booking

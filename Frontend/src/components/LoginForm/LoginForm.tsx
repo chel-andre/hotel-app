@@ -98,11 +98,11 @@ const LoginForm = () => {
         </span>
         {errors.password && <p className="text-red-600">{errors?.password.message as string}</p>}
       </div>
-      <button disabled={loading} className="submit bg-blue-800" type="submit">
+      <button disabled={loading} className="submit bg-blue-800" type="submit" id="Login-form">
         {loading ? "Loading...." : "Login"}
       </button>
 
-      <p className="signup-link">
+      <p className="signup-link" id="Register">
         No account? 
         <Link to={'/register'}> Register</Link>
       </p>

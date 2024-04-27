@@ -130,13 +130,13 @@ const registerHandler = async (data: FieldValues)=>{
         <div className="flex items-center justify-between">
           <button
             className="bg-blue-500 hover:bg-blue-700 text-white font-semibold w-full py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            type="submit"
+            type="submit" id="submit"
             disabled={loading}
           >
             {loading ? "Loading..." : "submit"}
           </button>
         </div>
-        <p>Already have a account? <Link to={"/login"} style={{color: "blue"}}>login here</Link></p>
+        <p>Already have an account? <Link id="login-here" to={"/login"} style={{color: "blue"}}>login here</Link></p>
       </form>
     </div>
   );
