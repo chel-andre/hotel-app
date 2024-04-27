@@ -1,0 +1,21 @@
+{
+    "name": "hotel-app",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "concurrently \"cd Backend && npm run start\" \"cd Frontend && npm run dev\""
+    },
+    "dependencies": {
+        "concurrently": "^8.2.2"
+    },
+    "devDependencies": {
+        "@stylistic/eslint-plugin": "^1.7.0",
+        "@typescript-eslint/eslint-plugin": "^6.14.0",
+        "@typescript-eslint/parser": "^6.14.0",
+        "eslint": "^8.55.0",
+        "eslint-plugin-react": "^7.34.1",
+        "eslint-plugin-react-hooks": "^4.6.0",
+        "eslint-plugin-react-refresh": "^0.4.5"
+    }
+}

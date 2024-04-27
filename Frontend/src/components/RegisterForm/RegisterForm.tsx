@@ -5,8 +5,6 @@ import UserSvc from "../../services/userService";
 import { toast } from "react-toastify";
 import axios from "axios";
 
-
-
 const RegisterForm = () => {
 const [loading, setLoading] = useState(false);
 const navigate = useNavigate();
