@@ -57,16 +57,16 @@ const SearchPage = () => {
       <div className="my-10 flex items-center flex-col">
        {!searchQuery.destination?  <div className="h-[30vh]"><h1 className="text-4xl font-bold text-blue-900 text-center">Search For Hotels here</h1></div>   : loading ? <div className="flex justify-center items-center"><Loader/></div> : (
         !data.length ? <div className="h-[30vh]">
-          <h1 className="text-4xl font-bold text-blue-900 text-center">
+          <h1 className="text-4xl font-bold text-blue-900 text-center" id="results">
           No results found for: <span className="text-red-900">{searchQuery.destination}</span>
         </h1>
         </div> : (
           <>
-             <h1 className="text-4xl font-bold text-blue-900 text-center">
+             <h1 className="text-4xl font-bold text-blue-900 text-center" id="results">
           Results for: <span className="text-red-900">{searchQuery.destination}</span>
         </h1>
         <div className="w-[85%] lg:w-[80%] my-5 p-3">
-          <select className="form-select appearance-none  bg-gray-100 border rounded-lg w-32 block p-1 text-base font-medium text-center text-gray-700 shadow-sm hover:focus:ring-2 hover:focus:ring-indigo-500 focus:outline-none focus:ring-opacity-5 disabled:cursor-not-allowed" onChange={(e: React.ChangeEvent<HTMLSelectElement>)=>{
+          <select id="sort" className="form-select appearance-none  bg-gray-100 border rounded-lg w-32 block p-1 text-base font-medium text-center text-gray-700 shadow-sm hover:focus:ring-2 hover:focus:ring-indigo-500 focus:outline-none focus:ring-opacity-5 disabled:cursor-not-allowed" onChange={(e: React.ChangeEvent<HTMLSelectElement>)=>{
             // searchQuery.sortOptions = e.target.value;
             let search = {
               ...searchQuery,

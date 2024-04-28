@@ -25,7 +25,7 @@ const SearchResult = ({ hotelData }: propType) => {
   } = hotelData;
 
   return (
-    <motion.div initial={{top: -100}} animate={{top: 0}} transition={{duration: 2, type: "tween"}}  className="w-full border-2 rounded-xl p-4 h-auto flex flex-col lg:flex-row gap-5">
+    <motion.div initial={{top: -100}} animate={{top: 0}} transition={{duration: 2, type: "tween"}} id="hotel" className="w-full border-2 rounded-xl p-4 h-auto flex flex-col lg:flex-row gap-5">
       <div className="w-[100%] lg:w-[25%]">
         <Link to={"/hotel/" + _id}>
           <img
@@ -50,7 +50,7 @@ const SearchResult = ({ hotelData }: propType) => {
             );
           })}
         </div>
-        <div className="flex gap-1">
+        <div id="rating" className="flex gap-1">
           {" "}
           <h4 className="text-red-900">Rating: </h4>
           <StarRating rating={starRating} />

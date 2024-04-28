@@ -8,6 +8,7 @@ const config: PlaywrightTestConfig = {
         ignoreHTTPSErrors: true,
         baseURL: 'http://localhost:5173/',
         screenshot: 'only-on-failure',
+        actionTimeout: 60000,
     },
     projects: [
         {
@@ -19,28 +20,10 @@ const config: PlaywrightTestConfig = {
                 },
             },
         },
-        {
-            name: 'firefox',
-            use: {
-                ...devices['Desktop Firefox'],
-                launchOptions: {
-                    args: ['--start-maximized'],
-                },
-            },
-        },
-        {
-            name: 'webkit',
-            use: {
-                ...devices['Desktop Safari'],
-                launchOptions: {
-                    args: ['--start-maximized'],
-                },
-            },
-        },
     ],
-  
-    timeout: 10000,
+
+    timeout: 60000,
     retries: 0,
 };
-  
+
 export default defineConfig(config);

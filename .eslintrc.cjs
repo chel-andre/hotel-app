@@ -5,6 +5,9 @@ module.exports = {
     es2021: true,
   },
   parser: '@typescript-eslint/parser',
+  parserOptions: {
+    project: './tsconfig.json',
+  },
   plugins: [
     'react',
     'react-hooks',
@@ -33,6 +36,7 @@ module.exports = {
       },
     ],
     'no-dupe-args': 'error',
+    '@typescript-eslint/no-floating-promises': 'error',
     '@typescript-eslint/no-unused-vars': [
       'error',
       {
