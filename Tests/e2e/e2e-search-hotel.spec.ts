@@ -65,9 +65,11 @@ async function fillSearchForm(page, destination){
 }
 
 async function verifySorting(page, option){
-    await page.locator('#sort').selectOption(option);
     await page.waitForSelector('#hotel');
+    await page.locator('#sort').selectOption(option);
     const hotels = await page.locator('#hotel');
+    await expect(hotels).toHaveCount(0);
+    await page.waitForSelector('#hotel');
     const hotelsCount = await hotels.count();
     const actualArray: number[] = [];
 
@@ -82,7 +84,7 @@ async function verifySorting(page, option){
     case priceAscendingOption:
     case priceDescendingOption:
         for (let i = 0; i < hotelsCount; i++) {
-            const price = (await hotels.nth(i).locator('#Price').textContent()).match(/\d+(\.\d+)?/)[0];
+            const price = (await hotels.nth(i).locator('#Price').textContent()).match(/\d+/g)[0];
             actualArray.push(price);
         }
 
@@ -92,5 +94,5 @@ async function verifySorting(page, option){
     }
 
     const sortedArray = [...actualArray].sort((a, b) => option === priceAscendingOption ? a - b : b - a);
-    expect(actualArray).toEqual(sortedArray);
+    await expect(actualArray).toEqual(sortedArray);
 }

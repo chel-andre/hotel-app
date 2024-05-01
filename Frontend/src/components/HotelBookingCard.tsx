@@ -42,7 +42,7 @@ const HotelBookingCard = ({bookData}: propType) => {
   }
 
   return (
-    <div className="max-w-sm rounded overflow-hidden shadow-lg bg-white p-5">
+    <div id="hotel" className="max-w-sm rounded overflow-hidden shadow-lg bg-white p-5">
       <img
         className="w-full h-48 object-cover object-center rounded-t-md"
         src={bookData.hotelId.imageUrl[1]}
@@ -64,7 +64,7 @@ const HotelBookingCard = ({bookData}: propType) => {
         <p className="text-gray-600 text-md mb-2" id="Check-Out">
         <span className="font-black">Check-Out: </span> {bookData?.checkOutDate}
         </p>
-        <p className="text-gray-600 text-md mb-2" id="Total Price">
+        <p id="Total-Price" className="text-gray-600 text-md mb-2">
         <span className="font-black">Total Price: </span> ${bookData?.totalPrice}
         </p>
         <div className="flex mt-4 gap-2">

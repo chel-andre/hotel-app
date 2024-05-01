@@ -137,7 +137,7 @@ const BookingForm = ({pricePerNight, hotelId, childCount, adultCount}: propType)
               {...register("adultCount")}
               className="w-full p-2 border rounded focus:outline-none focus:ring focus:border-blue-300"
             />
-            {errors.adultCount && <span className="text-red-700">{errors?.adultCount.message}</span>}
+            {errors.adultCount && <span id="errorAdult" className="text-red-700">{errors?.adultCount.message}</span>}
           </div>
           <div className="mb-4">
             <label
@@ -153,7 +153,7 @@ const BookingForm = ({pricePerNight, hotelId, childCount, adultCount}: propType)
               {...register("childCount")}
               className="w-full p-2 border rounded focus:outline-none focus:ring focus:border-blue-300"
             />
-            {errors.childCount && <span className="text-red-700">{errors?.childCount.message}</span>}
+            {errors.childCount && <span id="errorChild" className="text-red-700">{errors?.childCount.message}</span>}
           </div>
         </div>
         <div className="mt-6">
