@@ -86,6 +86,23 @@ test.describe('Hotel booking Flow', () => {
     });
 });
 
+// test('qqqqqqqqq', async ({ page }) => {
+//     await page.goto('');
+//     await page.click('#Login');
+//     await page.fill('input[name=email]', email);
+//     await page.fill('input[name=password]', password);
+//     await page.click('#Login-form');
+//     await expect(await page.locator('div[role=alert]')).toHaveCount(0);
+//     await page.click('#My-Bookings');
+//     await page.waitForSelector('#hotel');
+//     const hotels = await page.locator('#hotel');
+//     const hotelsCountBeforeDeleting = await hotels.count();
+//     for (let i = 0; i < hotelsCountBeforeDeleting; i++) {
+//         await hotels.nth(i).locator('#Delete-Booking').click();
+//         await page.click('.swal2-confirm');
+//     }
+// });
+
 function calculateDaysDifference() {
     const checkIn: any = new Date(checkInDate);
     const checkout: any = new Date(checkoutDate);

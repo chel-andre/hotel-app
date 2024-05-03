@@ -9,7 +9,7 @@ const config: PlaywrightTestConfig = {
         baseURL: 'http://localhost:5173/',
         screenshot: 'only-on-failure',
         actionTimeout: 60000,
-    },          
+    },            
     projects: [
         {   
             name: 'chromium',
@@ -18,12 +18,12 @@ const config: PlaywrightTestConfig = {
                 launchOptions: {
                     args: ['--start-fullscreen'],
                 },  
-            },
+            }, 
         },
     ],
 
     timeout: 60000,
-    retries: 0, 
+    retries: 0,  
 };
 
 export default defineConfig(config);
