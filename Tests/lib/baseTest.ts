@@ -3,12 +3,14 @@ import { BasePage } from '../pageObjects/basePage';
 import { RegisterPage } from '../pageObjects/registerPage';
 import { LoginPage } from '../pageObjects/loginPage';
 import { MainPage } from '../pageObjects/mainPage';
+import { SearchPage } from '../pageObjects/searchPage';
 
 const test = baseTest.extend<{
     basePage: BasePage;
     mainPage: MainPage;
     registerPage: RegisterPage;
     loginPage: LoginPage;
+    searchPage: SearchPage;
 }>({
     basePage: async ({ page }, use) => {
         await use(new BasePage(page));
@@ -21,6 +23,9 @@ const test = baseTest.extend<{
     },
     registerPage: async ({ page }, use) => {
         await use(new RegisterPage(page));
+    },
+    searchPage: async ({ page }, use) => {
+        await use(new SearchPage(page));
     },
 });
 
