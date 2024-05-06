@@ -1,4 +1,5 @@
-import { Page, Locator, expect } from '@playwright/test';
+import { Page, Locator, expect, APIRequestContext } from '@playwright/test';
+import { login } from '../lib/helpers/apiHelper';
 
 export class BasePage {
     readonly page: Page;
@@ -43,5 +44,10 @@ export class BasePage {
 
     async clickOnLogOutButton() {
         await this.LOGOUT_BUTTON.click();
+    }
+
+    async loginViaApi(request: APIRequestContext) {
+        await login(request, this.page);
+        await this.page.reload();
     }
 }

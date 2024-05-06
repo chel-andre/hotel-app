@@ -9,8 +9,8 @@ const config: PlaywrightTestConfig = {
         baseURL: 'http://localhost:5173/',
         screenshot: 'only-on-failure',
         actionTimeout: 60000,
-    },                      
-    projects: [ 
+    },                        
+    projects: [  
         {   
             name: 'chromium',
             use: {

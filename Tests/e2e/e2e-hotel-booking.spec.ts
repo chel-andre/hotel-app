@@ -12,11 +12,9 @@ let maxChildCount;
 let maxAdultCount;
 
 test.describe('Hotel booking Flow', () => {
-    test.beforeEach(async ({ mainPage, loginPage, hotelPage }) => {
+    test.beforeEach(async ({ mainPage, hotelPage, request }) => {
         await mainPage.goToMainPage();
-        await mainPage.clickOnLoginButton();
-        await loginPage.fillLoginForm();
-        await loginPage.verifyAlertTextAndDisapearance(loginSuccessfulAlert);
+        await mainPage.loginViaApi(request);
         await mainPage.clickOnFeaturedTab();
         ({ expectedHotelName, expectedHotelPrice } = await mainPage.clickOnRandomHotelDetailsButton());
         ({ maxChildCount, maxAdultCount } = await hotelPage
@@ -78,4 +76,3 @@ function calculateDaysDifference() {
 //         await page.click('.swal2-confirm');
 //     }
 // });
-

@@ -13,10 +13,8 @@ const priceAscendingOption = 'Price Ascending';
 const priceDescendingOption = 'Price Descending';
 
 test.describe.parallel('Search hotels Flow', () => {
-    test.beforeEach(async ({ mainPage, loginPage }) => {
+    test.beforeEach(async ({ mainPage }) => {
         await mainPage.goToMainPage();
-        await mainPage.clickOnLoginButton();
-        await loginPage.fillLoginForm();
     });
 
     test('Negative Scenario for search', async ({ mainPage, searchPage }) => {

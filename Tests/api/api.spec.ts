@@ -1,11 +1,10 @@
 import { test, expect } from '@playwright/test';
 import { validateJsonSchema } from '../lib/helpers/validateJsonSchema';
+import { testConfig } from '../testConfig';
 
 test.describe.parallel('API Testing', () => {
-    const baseUrl = 'http://localhost:3001/api/v1';
-
     test('GET Request - Get all hotels', async ({ request }) => {
-        const response = await request.get(`${baseUrl}/hotel/featured`);
+        const response = await request.get(`${testConfig.baseApiUrl}/hotel/featured`);
         expect(response.status()).toBe(200);
         const body = await response.json();
         expect(body.success).toBeTruthy();
@@ -15,7 +14,7 @@ test.describe.parallel('API Testing', () => {
     });
 
     test('POST Request - Create New User Negative', async ({ request }) => {
-        const response = await request.post(`${baseUrl}/auth/register`);
+        const response = await request.post(`${testConfig.baseApiUrl}/auth/register`);
         expect(response.status()).toBe(500);
         const body = await response.json();
         expect(body.message).toStrictEqual(['Password is required',
@@ -23,7 +22,7 @@ test.describe.parallel('API Testing', () => {
     });
 
     test('POST Request - Create New User Positive', async ({ request }) => {
-        const response = await request.post(`${baseUrl}/auth/register`, {
+        const response = await request.post(`${testConfig.baseApiUrl}/auth/register`, {
             data: {
                 firstName: 'first',
                 lastName: 'last',
@@ -39,7 +38,7 @@ test.describe.parallel('API Testing', () => {
     });
 
     test('POST Request - Login Positive', async ({ request }) => {
-        const response = await request.post(`${baseUrl}/auth/login`, {
+        const response = await request.post(`${testConfig.baseApiUrl}/auth/login`, {
             data: {
                 email: 'email@gmail.com',
                 password: 'password',
@@ -53,7 +52,7 @@ test.describe.parallel('API Testing', () => {
     });
 
     test('POST Request - Login Negative', async ({ request }) => {
-        const response = await request.post(`${baseUrl}/auth/login`);
+        const response = await request.post(`${testConfig.baseApiUrl}/auth/login`);
         expect(response.status()).toBe(401);
         const body = await response.json();
         expect(body.success).toBeFalsy();
