@@ -1,5 +1,5 @@
 import { Page, Locator, expect, APIRequestContext } from '@playwright/test';
-import { login } from '../lib/helpers/apiHelper';
+import { createBookingForRandomHotel, login, register } from '../lib/helpers/apiHelper';
 
 export class BasePage {
     readonly page: Page;
@@ -49,5 +49,17 @@ export class BasePage {
     async loginViaApi(request: APIRequestContext) {
         await login(request, this.page);
         await this.page.reload();
+    }
+
+    async loginViaApiWithNewCreatedUser(request: APIRequestContext) {
+        const { email, password } = await register(request);
+        const accessToken = await login(request, this.page, email, password);
+        await this.page.reload();
+
+        return accessToken;
+    }
+
+    async createBookingForRandomHotel(request: APIRequestContext, accessToken: string ) {
+        return await createBookingForRandomHotel(request, accessToken);
     }
 }

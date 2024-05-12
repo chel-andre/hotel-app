@@ -38,18 +38,18 @@ test.describe.parallel('Hotel booking creating', () => {
     });
 });
 
-test.describe('Hotel booking deleting', () => {
-    test('Positive Scenario for booking deleting', async ({ bookingPage, mainPage, myBookingsPage }) => {
-        await bookingPage.fillBokingForm(checkInDate, checkOutDate, maxChildCount, maxAdultCount);
-        await mainPage.verifyAlertTextAndDisapearance(bookingHasBeenCreatedAlert);
+test.describe.parallel('Hotel booking deleting', () => {
+    test.beforeEach(async ({ mainPage, request }) => {
+        await mainPage.goToMainPage();
+        const accessToken = await mainPage.loginViaApiWithNewCreatedUser(request);
+        expectedHotelName = await mainPage.createBookingForRandomHotel(request, accessToken);
         await mainPage.clickOnMyBookingsButton();
+    });
+    test('Positive Scenario for booking deleting', async ({myBookingsPage }) => {
         await myBookingsPage.verifyBookingDeleting(expectedHotelName , 'confirm deletion');
     });
 
-    test('Negative Scenario for booking deleting', async ({ bookingPage, mainPage, myBookingsPage }) => {
-        await bookingPage.fillBokingForm(checkInDate, checkOutDate, maxChildCount, maxAdultCount);
-        await mainPage.verifyAlertTextAndDisapearance(bookingHasBeenCreatedAlert);
-        await mainPage.clickOnMyBookingsButton();
+    test('Negative Scenario for booking deleting', async ({myBookingsPage }) => {
         await myBookingsPage.verifyBookingDeleting(expectedHotelName, 'cancel deletion');
     });
 });
@@ -62,20 +62,3 @@ function calculateDaysDifference() {
 
     return differenceDays;
 }
-
-// test('qqqqqqqqq', async ({ page }) => {
-//     await page.goto('');
-//     await page.click('#Login');
-//     await page.fill('input[name=email]', email);
-//     await page.fill('input[name=password]', password);
-//     await page.click('#Login-form');
-//     await expect(await page.locator('div[role=alert]')).toHaveCount(0);
-//     await page.click('#My-Bookings');
-//     await page.waitForSelector('#hotel');
-//     const hotels = await page.locator('#hotel');
-//     const hotelsCountBeforeDeleting = await hotels.count();
-//     for (let i = 0; i < hotelsCountBeforeDeleting; i++) {
-//         await hotels.nth(i).locator('#Delete-Booking').click();
-//         await page.click('.swal2-confirm');
-//     }
-// });

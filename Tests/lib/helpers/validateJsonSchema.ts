@@ -44,7 +44,7 @@ const hotelSchema = {
                     'isFeatured': { 'type': 'boolean' },
                     'imageUrl': {
                         'type': 'array',
-                        'items': { 
+                        'items': {
                             'type': 'string',
                             'pattern': '^https?://.+',
                         },
@@ -73,4 +73,3 @@ const hotelSchema = {
     },
     'required': ['success', 'message', 'data'],
 };
-

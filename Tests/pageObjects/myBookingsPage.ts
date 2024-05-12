@@ -5,12 +5,14 @@ export class MyBookingsPage extends BasePage {
     readonly HOTEL_CARD: Locator;
     readonly CONFIRM_DELETION_BUTTON: Locator;
     readonly CANCEL_DELETION_BUTTON: Locator;
+    readonly NO_BOOKING_FOUND_TEXT: Locator;
 
     constructor(page: Page) {
         super(page);
         this.HOTEL_CARD = page.locator('#hotel');
         this.CONFIRM_DELETION_BUTTON = page.locator('.swal2-confirm');
         this.CANCEL_DELETION_BUTTON = page.locator('.swal2-cancel');
+        this.NO_BOOKING_FOUND_TEXT = page.locator('h1.text-red-800');
     }
 
     async verifyHotelPageAndClickBookNow(expectedHotelName: string, childCount: string, adultCount: string,
@@ -39,9 +41,9 @@ export class MyBookingsPage extends BasePage {
         case 'confirm deletion':
             await this.CONFIRM_DELETION_BUTTON.click();
             await expect(hotels).toHaveCount(0);
-            await this.page.waitForSelector('#hotel');
             const hotelsCountAfterDeleting = await hotels.count();
             await expect(hotelsCountAfterDeleting).toEqual(hotelsCountBeforeDeleting - 1);
+            await expect(this.NO_BOOKING_FOUND_TEXT).toHaveText('No booking found');
             break;
         case 'cancel deletion':
             await this.CANCEL_DELETION_BUTTON.click();
