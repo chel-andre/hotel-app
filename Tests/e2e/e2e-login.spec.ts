@@ -1,7 +1,6 @@
 import test from '../lib/baseTest';
+import { generateRandomEmail, getRandomString } from '../lib/helpers/randomDataHelper';
 
-const invalidEmail = 'ivalidemail@gmail.com';
-const invalidPassword = 'invalidpassword';
 const loginSuccessfulAlert = 'Login Successful';
 const logoutSuccessfulAlert = 'user logged out successfully!';
 const invalidCredentials = 'Invalid credentials';
@@ -14,6 +13,8 @@ test.describe.parallel('Login / Logout Flow', () => {
     });
 
     test('Negative Scenario for login', async ({ loginPage }) => {
+        const invalidEmail = generateRandomEmail();
+        const invalidPassword = getRandomString();
         await loginPage.fillLoginForm(invalidEmail, invalidPassword);
         await loginPage.verifyAlertTextAndDisapearance(invalidCredentials);
     });

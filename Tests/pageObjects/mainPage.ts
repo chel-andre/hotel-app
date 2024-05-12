@@ -45,7 +45,7 @@ export class MainPage extends BasePage {
         const randomHotel = Math.floor(Math.random() * hotelsCount);
         while (await this.HOTEL_CARD.nth(randomHotel).getAttribute('aria-hidden') === 'true'
             && await this.ARROW_RIGHT_BUTTON.isVisible()) {
-            await this.ARROW_RIGHT_BUTTON;
+            await this.ARROW_RIGHT_BUTTON.click();
         }
 
         const expectedHotelName = await this.HOTEL_CARD.nth(randomHotel).locator('#hotel-name').textContent();

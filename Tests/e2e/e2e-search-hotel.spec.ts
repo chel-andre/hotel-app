@@ -1,7 +1,7 @@
 import test from '../lib/baseTest';
+import { getRandomString } from '../lib/helpers/randomDataHelper';
 
 const destination = 'Arab';
-const invalidDestination = Date.now().toString(36) + Math.random().toString(36).slice(2);
 const childCount = '1';
 const adultCount = '1';
 const checkInDate = '01/01/2000';
@@ -18,6 +18,7 @@ test.describe.parallel('Search hotels Flow', () => {
     });
 
     test('Negative Scenario for search', async ({ mainPage, searchPage }) => {
+        const invalidDestination = getRandomString();
         await mainPage.fillSearchForm(invalidDestination, childCount, adultCount, checkInDate, checkoutDate );
         await searchPage.verifyResultText(noResultsFoundFor, invalidDestination);
         await searchPage.verifyThatAnyHotelAndSortDropdownNotExist();

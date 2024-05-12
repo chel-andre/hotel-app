@@ -5,7 +5,6 @@ const checkOutDate = '02/01/2024';
 const expectedAdultErrorText = 'adult count cannot be more than ';
 const expectedChildErrorText = 'child count cannot ber more than ';
 const bookingHasBeenCreatedAlert = 'Your booking has been created';
-const loginSuccessfulAlert = 'Login Successful';
 let expectedHotelName;
 let expectedHotelPrice;
 let maxChildCount;
@@ -40,12 +39,14 @@ test.describe('Hotel booking Flow', () => {
 
     test('Positive Scenario for booking deleting', async ({ bookingPage, mainPage, myBookingsPage }) => {
         await bookingPage.fillBokingForm(checkInDate, checkOutDate, maxChildCount, maxAdultCount);
+        await mainPage.verifyAlertTextAndDisapearance(bookingHasBeenCreatedAlert);
         await mainPage.clickOnMyBookingsButton();
         await myBookingsPage.verifyBookingDeleting(expectedHotelName , 'confirm deletion');
     });
 
     test('Negative Scenario for booking deleting', async ({ bookingPage, mainPage, myBookingsPage }) => {
         await bookingPage.fillBokingForm(checkInDate, checkOutDate, maxChildCount, maxAdultCount);
+        await mainPage.verifyAlertTextAndDisapearance(bookingHasBeenCreatedAlert);
         await mainPage.clickOnMyBookingsButton();
         await myBookingsPage.verifyBookingDeleting(expectedHotelName, 'cancel deletion');
     });
