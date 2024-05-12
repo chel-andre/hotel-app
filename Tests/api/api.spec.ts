@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { validateJsonSchema } from '../lib/helpers/validateJsonSchema';
 import { testConfig } from '../testConfig';
+import { generateRandomEmail, generateRandomLastName, generateRandomName, getRandomString } from '../lib/helpers/randomDataHelper';
 
 test.describe.parallel('API Testing', () => {
     test('GET Request - Get all hotels', async ({ request }) => {
@@ -22,26 +23,30 @@ test.describe.parallel('API Testing', () => {
     });
 
     test('POST Request - Create New User Positive', async ({ request }) => {
+        const firstName = generateRandomName();
+        const lastName = generateRandomLastName();
+        const email = generateRandomEmail();
+        const password = getRandomString();
         const response = await request.post(`${testConfig.baseApiUrl}/auth/register`, {
             data: {
-                firstName: 'first',
-                lastName: 'last',
-                email: '11qqqqqqq@gmail.com',
-                password: '111111',
+                firstName,
+                lastName,
+                email,
+                password,
             },
         });
         expect(response.status()).toBe(200);
         const body = await response.json();
         expect(body.success).toBeTruthy();
         expect(body.message).toBe('User registered successfully');
-        expect(body.data).toStrictEqual({ email: '11qqqqqqq@gmail.com', firstName: 'first', lastName: 'last' });
+        expect(body.data).toStrictEqual({ email, firstName, lastName });
     });
 
     test('POST Request - Login Positive', async ({ request }) => {
         const response = await request.post(`${testConfig.baseApiUrl}/auth/login`, {
             data: {
-                email: 'email@gmail.com',
-                password: 'password',
+                email: testConfig.email,
+                password: testConfig.password,
             },
         });
         expect(response.status()).toBe(200);

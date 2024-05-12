@@ -10,7 +10,7 @@ let expectedHotelPrice;
 let maxChildCount;
 let maxAdultCount;
 
-test.describe('Hotel booking Flow', () => {
+test.describe.parallel('Hotel booking creating', () => {
     test.beforeEach(async ({ mainPage, hotelPage, request }) => {
         await mainPage.goToMainPage();
         await mainPage.loginViaApi(request);
@@ -36,7 +36,9 @@ test.describe('Hotel booking Flow', () => {
         await myBookingsPage.verifyHotelPageAndClickBookNow(expectedHotelName, maxChildCount, maxAdultCount,
             checkInDate, checkOutDate, totalPrice);
     });
+});
 
+test.describe('Hotel booking deleting', () => {
     test('Positive Scenario for booking deleting', async ({ bookingPage, mainPage, myBookingsPage }) => {
         await bookingPage.fillBokingForm(checkInDate, checkOutDate, maxChildCount, maxAdultCount);
         await mainPage.verifyAlertTextAndDisapearance(bookingHasBeenCreatedAlert);
