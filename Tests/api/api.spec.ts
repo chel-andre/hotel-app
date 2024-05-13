@@ -2,6 +2,9 @@ import { test, expect } from '@playwright/test';
 import { validateJsonSchema } from '../lib/helpers/validateJsonSchema';
 import { testConfig } from '../testConfig';
 import { generateRandomEmail, generateRandomLastName, generateRandomName, getRandomString } from '../lib/helpers/randomDataHelper';
+import { deleteUserByEmail } from '../lib/helpers/dbHelper';
+
+let email;
 
 test.describe.parallel('API Testing', () => {
     test('GET Request - Get all hotels', async ({ request }) => {
@@ -25,7 +28,7 @@ test.describe.parallel('API Testing', () => {
     test('POST Request - Create New User Positive', async ({ request }) => {
         const firstName = generateRandomName();
         const lastName = generateRandomLastName();
-        const email = generateRandomEmail();
+        email = generateRandomEmail();
         const password = getRandomString();
         const response = await request.post(`${testConfig.baseApiUrl}/auth/register`, {
             data: {
@@ -62,5 +65,11 @@ test.describe.parallel('API Testing', () => {
         const body = await response.json();
         expect(body.success).toBeFalsy();
         expect(body.message).toBe('Email or password is missing!!!');
+    });
+
+    test.afterAll(async () => {
+        if(email) {
+            await deleteUserByEmail(email);
+        }
     });
 });

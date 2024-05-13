@@ -56,7 +56,7 @@ export class BasePage {
         const accessToken = await login(request, this.page, email, password);
         await this.page.reload();
 
-        return accessToken;
+        return { accessToken, email };
     }
 
     async createBookingForRandomHotel(request: APIRequestContext, accessToken: string ) {

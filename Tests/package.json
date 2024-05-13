@@ -8,9 +8,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@playwright/test": "^1.43.1"
+    "@playwright/test": "^1.43.1",
+    "mongoose": "^8.3.4"
   },
   "devDependencies": {
+    "@types/mongoose": "^5.11.97",
     "ajv": "^8.13.0"
   }
 }

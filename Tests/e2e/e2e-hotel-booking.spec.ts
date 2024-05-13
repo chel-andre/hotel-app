@@ -1,4 +1,6 @@
 import test from '../lib/baseTest';
+import { deleteAllBookingsForUserByEmail, deleteUserByEmail } from '../lib/helpers/dbHelper';
+import { testConfig } from '../testConfig';
 
 const checkInDate = '01/01/2024';
 const checkOutDate = '02/01/2024';
@@ -9,6 +11,7 @@ let expectedHotelName;
 let expectedHotelPrice;
 let maxChildCount;
 let maxAdultCount;
+let email;
 
 test.describe.parallel('Hotel booking creating', () => {
     test.beforeEach(async ({ mainPage, hotelPage, request }) => {
@@ -35,22 +38,38 @@ test.describe.parallel('Hotel booking creating', () => {
         const totalPrice = (expectedHotelPrice * daysDifference).toString();
         await myBookingsPage.verifyHotelPageAndClickBookNow(expectedHotelName, maxChildCount, maxAdultCount,
             checkInDate, checkOutDate, totalPrice);
+        email = testConfig.email;
+    });
+
+    test.afterEach(async () => {
+        if(email) {
+            await deleteAllBookingsForUserByEmail(email);
+        }
     });
 });
 
-test.describe.parallel('Hotel booking deleting', () => {
+test.describe('Hotel booking deleting', () => {
     test.beforeEach(async ({ mainPage, request }) => {
         await mainPage.goToMainPage();
-        const accessToken = await mainPage.loginViaApiWithNewCreatedUser(request);
+        const { accessToken, email: userEmail } = await mainPage.loginViaApiWithNewCreatedUser(request);
+        email = userEmail;
         expectedHotelName = await mainPage.createBookingForRandomHotel(request, accessToken);
         await mainPage.clickOnMyBookingsButton();
     });
-    test('Positive Scenario for booking deleting', async ({myBookingsPage }) => {
-        await myBookingsPage.verifyBookingDeleting(expectedHotelName , 'confirm deletion');
+
+    test('Positive Scenario for booking deleting', async ({ myBookingsPage }) => {
+        await myBookingsPage.verifyBookingDeleting(expectedHotelName, 'confirm deletion');
     });
 
-    test('Negative Scenario for booking deleting', async ({myBookingsPage }) => {
+    test('Negative Scenario for booking deleting', async ({ myBookingsPage }) => {
         await myBookingsPage.verifyBookingDeleting(expectedHotelName, 'cancel deletion');
+    });
+
+    test.afterEach(async () => {
+        if(email) {
+            await deleteAllBookingsForUserByEmail(email);
+            await deleteUserByEmail(email);
+        }
     });
 });
 

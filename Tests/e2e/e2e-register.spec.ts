@@ -1,7 +1,9 @@
 import test from '../lib/baseTest';
+import { deleteUserByEmail } from '../lib/helpers/dbHelper';
 import { generateRandomEmail, generateRandomLastName, generateRandomName, getRandomString } from '../lib/helpers/randomDataHelper';
 
 const registerSuccessfulAlert = 'User registered successfully';
+let email;
 
 test.describe.parallel('Register Flow', () => {
     test.beforeEach(async ({ mainPage, loginPage }) => {
@@ -20,11 +22,17 @@ test.describe.parallel('Register Flow', () => {
     });
 
     test('Positive Scenario for register', async ({ registerPage }) => {
-        const email = generateRandomEmail();
+        email = generateRandomEmail();
         const password = getRandomString();
         const firstName = generateRandomName();
         const lastName = generateRandomLastName();
         await registerPage.fillRegisterForm(firstName, lastName, email, password);
         await registerPage.verifyAlertTextAndDisapearance(registerSuccessfulAlert);
+    });
+
+    test.afterEach(async () => {
+        if(email) {
+            await deleteUserByEmail(email);
+        }
     });
 });
