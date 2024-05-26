@@ -5,7 +5,7 @@ const config: PlaywrightTestConfig = {
     reporter: [['html']],
     testMatch: '**/*.spec.ts',
     use: {
-        headless: false,
+        headless: true,
         viewport: { width: 1920, height: 1080 },
         ignoreHTTPSErrors: true,
         baseURL: 'http://localhost:5173/',
