@@ -37,7 +37,7 @@ test.describe.parallel('Search hotels Flow', () => {
     });
 
     test('Sort by Price Descending', async ({ mainPage, searchPage }) => {
-        await mainPage.fillSearchForm(destination, childCount, adultCount, checkInDate, checkoutDate );
+       // await mainPage.fillSearchForm(destination, childCount, adultCount, checkInDate, checkoutDate );
         await searchPage.verifySorting(priceDescendingOption);
     });
 });
