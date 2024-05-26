@@ -16,6 +16,7 @@ jobs:
     - name: Install dependencies
       run: npm run install-all
     - name: Install Playwright Browsers
+      working-directory: ./Tests
       run: npx playwright install --with-deps
     - name: Run environment
       run: |
