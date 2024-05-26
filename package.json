@@ -4,7 +4,8 @@
     "version": "0.0.0",
     "type": "module",
     "scripts": {
-        "dev": "concurrently \"cd Backend && npm run start\" \"cd Frontend && npm run dev\""
+        "dev": "concurrently \"cd Backend && npm run start\" \"cd Frontend && npm run dev\"",
+        "install-all": "npm ci && cd Frontend && npm ci && cd ../Backend && npm ci && cd ../Tests && npm ci"
     },
     "dependencies": {
         "concurrently": "^8.2.2"
