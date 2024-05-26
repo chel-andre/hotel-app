@@ -1,6 +1,8 @@
 import { PlaywrightTestConfig, devices, defineConfig } from '@playwright/test';
 
 const config: PlaywrightTestConfig = {
+    //reporter: [['./lib/reporter.ts']],
+    reporter: [['html']],
     testMatch: '**/*.spec.ts',
     use: {
         headless: false,
