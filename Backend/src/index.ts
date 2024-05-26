@@ -48,7 +48,7 @@ app.use("*", (req, res)=>{
     res.status(404).json({success: false, message: "Route not found!!!!"})
 })
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 
 app.use(globalErrorHandler)
 app.listen(port,async()=>{
