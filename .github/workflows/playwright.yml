@@ -19,6 +19,9 @@ jobs:
       run: npx playwright install --with-deps
     - name: Run environment
       run: npm run dev
+      env:
+        MONGOOSE_CONNECTION_STRING: ${{ secrets.MONGOOSE_CONNECTION_STRING }}
+        SECRET_KEY: ${{ secrets.SECRET_KEY }}
     - name: Wait on
       uses: iFaxity/wait-on-action@v1.2.1
       with:
